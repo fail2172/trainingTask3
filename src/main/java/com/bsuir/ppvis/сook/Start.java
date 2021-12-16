@@ -7,6 +7,7 @@ import com.bsuir.ppvis.сook.diagnostics.Diagnostic;
 import com.bsuir.ppvis.сook.diagnostics.impl.SimpleDiagnostic;
 import com.bsuir.ppvis.сook.model.*;
 import com.bsuir.ppvis.сook.question.Question;
+import com.bsuir.ppvis.сook.question.impl.AmountOfPeopleQuestion;
 import com.bsuir.ppvis.сook.question.impl.MainIngredientQuestion;
 import com.bsuir.ppvis.сook.question.impl.RecipeTypeQuestion;
 
@@ -21,12 +22,17 @@ public class Start {
         Question<Product> mainProductQuestion = new MainIngredientQuestion();
         mainProductQuestion.giveAnAnswer(potato);
 
+        //Дополнительный вопрос
+        Question<Integer> amountOfPeople = new AmountOfPeopleQuestion("сколько человек");
+        amountOfPeople.giveAnAnswer(2);
+
         Question<RecipeType> recipeTypeQuestion = new RecipeTypeQuestion();
         recipeTypeQuestion.giveAnAnswer(RecipeType.LUNCH);
 
         Diagnostic diagnostic = new SimpleDiagnostic(new UserProductRepositoryImpl());
         diagnostic.uploadQuestion(mainProductQuestion);
         diagnostic.uploadQuestion(recipeTypeQuestion);
+        diagnostic.uploadQuestion(amountOfPeople);
 
         List<Recipe> recipes = (List<Recipe>) diagnostic.pickUpRecipes();
 
