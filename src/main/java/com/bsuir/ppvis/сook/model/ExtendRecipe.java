@@ -4,8 +4,8 @@ public class ExtendRecipe extends Recipe{
 
     private int amountOfPeople;
 
-    public ExtendRecipe(RecipeType recipeType) {
-        super(recipeType);
+    public ExtendRecipe(String name, RecipeType recipeType) {
+        super(name, recipeType);
     }
 
     public void setAmountOfPeople(int amountOfPeople) {

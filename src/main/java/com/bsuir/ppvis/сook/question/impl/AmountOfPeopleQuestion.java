@@ -9,8 +9,8 @@ public class AmountOfPeopleQuestion implements Question<Integer> {
     private final String question;
     private Integer answer;
 
-    public AmountOfPeopleQuestion(String question) {
-        this.question = question;
+    public AmountOfPeopleQuestion() {
+        this.question = "На скольких человек готовим?";
     }
 
     @Override

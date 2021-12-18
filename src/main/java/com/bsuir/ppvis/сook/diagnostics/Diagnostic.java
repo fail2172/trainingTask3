@@ -11,4 +11,6 @@ public interface Diagnostic {
 
     void uploadQuestion(Question question);
 
+    void clearQuestionList();
+
 }

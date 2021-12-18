@@ -1,9 +1,11 @@
 package com.bsuir.ppvis.сook.model;
 
-public class Ingredient {
+import java.io.Serializable;
+
+public class Ingredient implements Serializable {
 
     private final Product product;
-    private final Double weight;
+    private Double weight;
 
     public Ingredient(Product product, Double weight) {
         this.product = product;
@@ -16,6 +18,10 @@ public class Ingredient {
 
     public Double getWeight() {
         return weight;
+    }
+
+    public void addIngredient(Ingredient ingredient) {
+        this.weight += ingredient.weight;
     }
 
     @Override
