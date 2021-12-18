@@ -32,6 +32,9 @@ public class Start {
             } catch (NoNextStepException e) {
                 LOGGER.error("Ошибка во время приготовления",e);
             }
+
+            //Заканчиваем готовить
+            assistant.finishCooking();
             return;
         }
 
