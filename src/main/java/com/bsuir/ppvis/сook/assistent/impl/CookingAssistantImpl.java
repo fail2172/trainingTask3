@@ -24,10 +24,10 @@ import java.util.Set;
 
 public class CookingAssistantImpl implements Serializable, CookingAssistant {
 
-    private final IngredientRepository ingredientRepository;
-    private final RecipeRepository recipeRepository;
-    private final Diagnostic diagnostic;
-    private Optional<Cooking> cooking;
+    protected final IngredientRepository ingredientRepository;
+    protected final RecipeRepository recipeRepository;
+    protected final Diagnostic diagnostic;
+    protected Optional<Cooking> cooking;
 
     public CookingAssistantImpl() {
         ingredientRepository = new IngredientRepositoryImpl();

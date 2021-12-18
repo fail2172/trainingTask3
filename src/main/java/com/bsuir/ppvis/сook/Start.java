@@ -1,7 +1,7 @@
 package com.bsuir.ppvis.сook;
 
-import com.bsuir.ppvis.сook.assistent.CookingAssistant;
-import com.bsuir.ppvis.сook.assistent.impl.CookingAssistantImpl;
+import com.bsuir.ppvis.сook.assistent.CookingAssistantWithAnalogues;
+import com.bsuir.ppvis.сook.assistent.impl.CookingAssistantWithAnaloguesImpl;
 import com.bsuir.ppvis.сook.exception.NoNextStepException;
 import com.bsuir.ppvis.сook.model.Product;
 import com.bsuir.ppvis.сook.model.ProductType;
@@ -20,7 +20,8 @@ public class Start {
     private final static Logger LOGGER = LogManager.getLogger(Start.class);
 
     public static void main(String[] args) {
-        CookingAssistant assistant = new CookingAssistantImpl();
+        //Теперь используется асистент с функцией добавления аналога продукта
+        CookingAssistantWithAnalogues assistant = new CookingAssistantWithAnaloguesImpl();
 
         //Если мы хотим продолжить готовить
         if (assistant.weArePreparingNow()){
@@ -48,6 +49,10 @@ public class Start {
         //Называем асистенту необходимые параметры
         assistant.uploadRecipeParam(mainProductQuestion);
         assistant.uploadRecipeParam(recipeTypeQuestion);
+
+        //Сообщаем асистенту о возможных аналогах
+        Product analogue = new Product("Батат", ProductType.VEGETABLES);
+        assistant.addAnalogue(mainProduct, analogue);
 
         List<Recipe> recipes = (List<Recipe>) assistant.pickUpRecipes();
 

@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 
 public class SimpleDiagnostic implements Diagnostic {
 
-    private final List<Question> questions;
-    private final RecipeRepository recipeRepository;
-    private final IngredientRepository ingredientRepository;
+    protected final List<Question> questions;
+    protected final RecipeRepository recipeRepository;
+    protected final IngredientRepository ingredientRepository;
 
     public SimpleDiagnostic(IngredientRepository ingredientRepository, RecipeRepository recipeRepository) {
         this.ingredientRepository = ingredientRepository;
