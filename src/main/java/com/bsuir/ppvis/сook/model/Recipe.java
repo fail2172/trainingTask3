@@ -7,11 +7,13 @@ import java.util.Set;
 
 public class Recipe implements Serializable {
 
+    private final String name;
     private final Set<Ingredient> ingredientList;
     private final Set<CookingStep> steps;
     private final RecipeType recipeType;
 
-    public Recipe(RecipeType recipeType) {
+    public Recipe(String name, RecipeType recipeType) {
+        this.name = name;
         this.recipeType = recipeType;
         this.ingredientList = new HashSet<>();
         this.steps = new HashSet<>();
@@ -23,6 +25,10 @@ public class Recipe implements Serializable {
 
     public void addIngredients(List<Ingredient> ingredients){
         ingredientList.addAll(ingredients);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Set<Ingredient> getIngredientList() {

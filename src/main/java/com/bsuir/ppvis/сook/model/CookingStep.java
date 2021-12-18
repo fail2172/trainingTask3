@@ -1,6 +1,8 @@
 package com.bsuir.ppvis.сook.model;
 
-public class CookingStep {
+import java.io.Serializable;
+
+public class CookingStep implements Serializable {
 
     private final Ingredient ingredient;
     private final String action;
