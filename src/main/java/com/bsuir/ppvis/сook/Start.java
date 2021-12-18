@@ -1,5 +1,6 @@
 package com.bsuir.ppvis.сook;
 
+import com.bsuir.ppvis.сook.allergy.Allergy;
 import com.bsuir.ppvis.сook.assistent.CookingAssistant;
 import com.bsuir.ppvis.сook.assistent.impl.CookingAssistantImpl;
 import com.bsuir.ppvis.сook.exception.NoNextStepException;
@@ -8,6 +9,7 @@ import com.bsuir.ppvis.сook.model.ProductType;
 import com.bsuir.ppvis.сook.model.Recipe;
 import com.bsuir.ppvis.сook.model.RecipeType;
 import com.bsuir.ppvis.сook.question.Question;
+import com.bsuir.ppvis.сook.question.impl.AllergyQuestion;
 import com.bsuir.ppvis.сook.question.impl.MainIngredientQuestion;
 import com.bsuir.ppvis.сook.question.impl.RecipeTypeQuestion;
 import org.apache.logging.log4j.LogManager;
@@ -45,9 +47,14 @@ public class Start {
         Question<RecipeType> recipeTypeQuestion = new RecipeTypeQuestion();
         recipeTypeQuestion.giveAnAnswer(RecipeType.LUNCH);
 
+        //Добавление вопроса с алергией
+        Question<Allergy> allergyQuestion = new AllergyQuestion();
+        allergyQuestion.giveAnAnswer(new Allergy(ProductType.CEREALS));
+
         //Называем асистенту необходимые параметры
         assistant.uploadRecipeParam(mainProductQuestion);
         assistant.uploadRecipeParam(recipeTypeQuestion);
+        assistant.uploadRecipeParam(allergyQuestion);
 
         List<Recipe> recipes = (List<Recipe>) assistant.pickUpRecipes();
 
